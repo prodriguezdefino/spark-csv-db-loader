@@ -1,20 +1,18 @@
 #!/usr/bin/env bash
-#
-# Script to run the MySQL DB Migration Job
+# Helper script for GCP run
+
 SPARKMASTER="yarn-cluster"
 # Set Dataproc Cluster Name
 CLUSTER=<dataproc cluster name>
 # Set App Name
-APPNAME="MySQL Full Migration Test"
+APPNAME="CSV to DB"
 # Set Dataproc Region
 REGION=<dataproc region>
 SPARKSERIALIZER="org.apache.spark.serializer.KryoSerializer"
 # Set Job Jar Location on GCS
-JOBJAR="gs://<bucket>/db-sync-assembly-1.0.jar"
-# Set Table Name
-TABLE="<table name>"
-# Set Job Configuration JSON Location
-CONFIGFILE="gs://<bucket>/full-load-${TABLE}.json"
+JOBJAR="gs://<bucket>/spark-csv-db-loader-assembly-0.0.1.jar"
+# Set Job Configuration JSON Location (may be based on the src/resources/application.conf file)
+CONFIGFILE="gs://<bucket>/<config>.json"
 # Set Number of Executors
 # NUMEXECUTORS=126
 # Set Executor Memory
